@@ -1,0 +1,26 @@
+{
+  "name": "@jobscale/web-storage",
+  "version": "0.0.1",
+  "description": "encrypt 'AES-GCM' storage",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jobscale/web-storage.git"
+  },
+  "keywords": ["store", "storage", "encrypt", "AES-GCM"],
+  "author": "jobscale <jobscale@users.noreply.github.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jobscale/web-storage/issues"
+  },
+  "homepage": "https://github.com/jobscale/web-storage#readme",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint",
+    "test": "npm run lint"
+  },
+  "devDependencies": {
+    "@jobscale/eslint-plugin-standard": "^0.1.2",
+    "eslint": "^10.10.0"
+  }
+}
