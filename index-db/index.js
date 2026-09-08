@@ -12,16 +12,16 @@ export const indexStore = {
   async gzip(data) {
     const cs = new CompressionStream('gzip');
     const writer = cs.writable.getWriter();
-    writer.write(data);
-    writer.close();
+    await writer.write(data);
+    await writer.close();
     return new Response(cs.readable).arrayBuffer();
   },
 
   async gunzip(data) {
     const ds = new DecompressionStream('gzip');
     const writer = ds.writable.getWriter();
-    writer.write(data);
-    writer.close();
+    await writer.write(data);
+    await writer.close();
     return new Response(ds.readable).arrayBuffer();
   },
 
@@ -97,7 +97,7 @@ export const indexStore = {
     return Promise.resolve().then(async () => {
       const decode = encrypted => {
         if (!encrypted) return undefined;
-        if (insecure) JSON.parse(encrypted);
+        if (insecure) return JSON.parse(encrypted);
         return indexStore.decrypt(encrypted).catch(() => undefined);
       };
       const db = await indexStore.init();
@@ -113,10 +113,6 @@ export const indexStore = {
   },
 
   async removeItem(key) {
-    if (location.protocol.endsWith('http:')) {
-      localStorage.removeItem(key);
-      return undefined;
-    }
     const db = await indexStore.init();
     return new Promise((resolve, reject) => {
       const tx = db.transaction(indexStore.TABLE, 'readwrite');
@@ -128,10 +124,6 @@ export const indexStore = {
   },
 
   async clear() {
-    if (location.protocol.endsWith('http:')) {
-      localStorage.clear();
-      return undefined;
-    }
     const db = await indexStore.init();
     return new Promise((resolve, reject) => {
       const tx = db.transaction(indexStore.TABLE, 'readwrite');
