@@ -1,4 +1,4 @@
-const sharedStore = {
+export const sharedStore = {
   enc: new TextEncoder(),
   dec: new TextDecoder(),
   PASSWORD: '<secret>',

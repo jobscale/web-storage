@@ -1,4 +1,4 @@
-const indexStore = {
+export const indexStore = {
   enc: new TextEncoder(),
   dec: new TextDecoder(),
   DATABASE: 'SecureDB',

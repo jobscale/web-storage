@@ -1,4 +1,4 @@
-const localStore = {
+export const localStore = {
   enc: new TextEncoder(),
   dec: new TextDecoder(),
   PASSWORD: '<secret>',
