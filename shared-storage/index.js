@@ -101,7 +101,7 @@ export const sharedStore = {
     return Promise.resolve().then(async () => {
       const encrypted = GM_getValue(key);
       if (!encrypted) return undefined;
-      if (insecure) return JSON.pase(encrypted);
+      if (insecure) return JSON.parse(encrypted);
       const buffer = await sharedStore.bufferFrom(encrypted);
       return sharedStore.decrypt(buffer).catch(() => undefined);
     })

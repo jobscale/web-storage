@@ -97,7 +97,7 @@ export const indexStore = {
     return Promise.resolve().then(async () => {
       const decode = encrypted => {
         if (!encrypted) return undefined;
-        if (insecure) JSON.pase(encrypted);
+        if (insecure) JSON.parse(encrypted);
         return indexStore.decrypt(encrypted).catch(() => undefined);
       };
       const db = await indexStore.init();
