@@ -10,16 +10,16 @@ export const localStore = {
   async gzip(data) {
     const cs = new CompressionStream('gzip');
     const writer = cs.writable.getWriter();
-    await writer.write(data);
-    await writer.close();
+    writer.write(data);
+    writer.close();
     return new Response(cs.readable).arrayBuffer();
   },
 
   async gunzip(data) {
     const ds = new DecompressionStream('gzip');
     const writer = ds.writable.getWriter();
-    await writer.write(data);
-    await writer.close();
+    writer.write(data);
+    writer.close();
     return new Response(ds.readable).arrayBuffer();
   },
 
